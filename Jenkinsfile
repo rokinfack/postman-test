@@ -1,5 +1,10 @@
 pipeline {
-    agent any
+     agent {
+        docker {
+            image 'postman/newman:alpine'  // Using the official Newman Docker image
+            args '-v $WORKSPACE:/newman'  // Mount Jenkins workspace to a writable directory
+        }
+    }
     stages {
         stage('Install dependencies') {
             steps {
