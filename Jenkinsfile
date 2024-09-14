@@ -16,10 +16,5 @@ pipeline {
             }
         }
     }
-    post {
-        always {
-            // Publier les résultats des tests API
-            // archiveArtifacts artifacts: 'path/to/report.json'
-        }
-    }
+  
 }
