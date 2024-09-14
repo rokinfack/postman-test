@@ -11,7 +11,7 @@ pipeline {
             steps {
                 // Exécuter les tests API avec une collection Postman locale
                 sh '''
-                newman run New Collection.postman_collection.json
+                newman run newman_collections.json
                 '''
             }
         }
