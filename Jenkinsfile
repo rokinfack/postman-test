@@ -11,9 +11,24 @@ pipeline {
             steps {
                 // Exécuter les tests API avec une collection Postman locale
                 sh '''
-                newman run newman_collections.json
+                newman run newman_collections.json \
+                 --reporters cli,json,junit \
+                --reporter-json-export /etc/newman/report.json \
+                    --reporter-junit-export /etc/newman/report.xml
                 '''
             }
+        }
+    }
+     post {
+        always {
+            // Archive the generated reports for later inspection
+            archiveArtifacts artifacts: 'report.json, report.xml'
+        }
+        success {
+            echo 'API Tests Passed!'
+        }
+        failure {
+            echo 'API Tests Failed. Check the reports for details.'
         }
     }
   
