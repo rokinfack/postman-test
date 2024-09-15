@@ -8,6 +8,7 @@ pipeline {
                 --reporters cli,json,junit \
                 --reporters cli,htmlextra \
                  --reporter-htmlextra-export ./newman/report.html
+                  ls -la ./newman
                 '''
             }
         }
