@@ -15,7 +15,7 @@ pipeline {
     post {
         always {
             //archiveArtifacts artifacts: 'report.json, report.xml'
-            archiveArtifacts artifacts: 'newman/report.html', allowEmptyArchive: true
+            archiveArtifacts artifacts: './newman/report.html', allowEmptyArchive: true
 
         }
         success {
