@@ -1,7 +1,7 @@
 pipeline {
      agent {
         docker {
-            image 'postman/newman:alpine'  // Using the official Newman Docker image
+            image 'postman/newman'  // Using the official Newman Docker image
             args '-v $WORKSPACE:/newman'  // Mount Jenkins workspace to a writable directory
         }
     }
@@ -19,7 +19,7 @@ pipeline {
                 newman run newman_collections.json \
                  --reporters cli,json,junit \
                 --reporter-json-export /etc/newman/report.json \
-                    --reporter-junit-export /etc/newman/report.xml
+                --reporter-junit-export /etc/newman/report.xml
                 '''
             }
         }
