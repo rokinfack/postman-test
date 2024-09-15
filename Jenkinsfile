@@ -2,7 +2,7 @@ pipeline {
     agent {
         docker {
             image 'postman/newman'
-            args '-v $WORKSPACE:/newman'
+            args '-v ./:/newman'
         }
     }
     stages {
