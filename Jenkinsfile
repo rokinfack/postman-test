@@ -1,15 +1,6 @@
 pipeline {
     agent any
     stages {
-        stage('Install html reporter') {
-            steps {
-                sh '''
-                 npm install -g newman-reporter-htmlextra
-                '''
-            }
-        }
-    
- 
         stage('Run Newman tests') {
             steps {
                 sh '''
