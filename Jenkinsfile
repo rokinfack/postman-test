@@ -8,8 +8,8 @@ pipeline {
                 '''
             }
         }
-    }
-     stages {
+    
+ 
         stage('Run Newman tests') {
             steps {
                 sh '''
