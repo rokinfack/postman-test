@@ -7,7 +7,7 @@ pipeline {
                  newman run newman_collections.json \
                 --reporters cli,json,junit \
                 --reporters cli,htmlextra \
-                 --reporter-htmlextra-export ./report.html
+                 --reporter-htmlextra-export ./newman/report.html
                 '''
             }
         }
