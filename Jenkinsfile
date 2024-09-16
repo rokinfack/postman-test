@@ -7,7 +7,7 @@ pipeline {
                  mkdir -p reports
                  newman run newman_collections.json \
                 --reporters cli,json,junit \
-                --reporters cli,htmlextra \
+                -r cli,htmlextra \
                  --reporter-htmlextra-export ./reports/myreport.html \
                  --reporter-htmlextra-theme default
                   ls -la ./reports
