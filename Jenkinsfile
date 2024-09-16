@@ -15,7 +15,7 @@ pipeline {
                 '''
             }
         }
-         stages {
+      
         stage('Set CSP') {
             steps {
                 script {
