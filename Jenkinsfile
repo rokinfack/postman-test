@@ -1,5 +1,9 @@
 pipeline {
-    agent any
+   agent {
+        docker { 
+            image 'postman/newman'
+        }
+    }
     stages {
         stage('Installation de newman') {
             steps {
