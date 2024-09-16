@@ -2,7 +2,7 @@ pipeline {
    agent {
         docker { 
             image 'postman/newman' 
-            args '-v /var/run/docker.sock:/var/run/docker.sock'
+            args '-v /Users/rostandkinfack/.docker/run/docker.sock:/var/run/docker.sock'
         }
     }
     stages {
