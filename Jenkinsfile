@@ -16,10 +16,10 @@ pipeline {
     }
    post {
         always {
-            archiveArtifacts artifacts: 'newman/*.html', allowEmptyArchive: true
+            archiveArtifacts artifacts: 'newman/report.html', allowEmptyArchive: true
             publishHTML(target: [
-                reportDir: 'newman/',
-                reportFiles: '*.html',
+                reportDir: 'newman',
+                reportFiles: 'report.html',
                 keepAll: true,
                 alwaysLinkToLastBuild: true,
                 allowMissing: true
