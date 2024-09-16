@@ -10,7 +10,7 @@ pipeline {
                 --reporters cli,htmlextra \
                  --reporter-htmlextra-export ./reports/myreport.html \
                  --reporter-htmlextra-theme default
-                  ls -la ./newman
+                  ls -la ./reports
                 '''
             }
         }
