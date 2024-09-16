@@ -1,11 +1,17 @@
 pipeline {
    agent {
         docker { 
-            image 'postman/newman' 
+            image 'node:latest' 
             args '-v /Users/rostandkinfack/.docker/run/docker.sock:/var/run/docker.sock'
         }
     }
     stages {
+
+         stage('RInstallation de newman') {
+            steps {
+                sh 'npm install newman'
+            }
+        }
         stage('Run Newman tests') {
             steps {
                 sh '''
