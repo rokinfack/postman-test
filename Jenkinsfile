@@ -1,10 +1,5 @@
 pipeline {
-   agent {
-        docker { 
-            image 'node:18.10.0' 
-            args '-v /var/run/docker.sock:/var/run/docker.sock'
-        }
-    }
+    agent any
     stages {
         stage('Installation de newman') {
             steps {
