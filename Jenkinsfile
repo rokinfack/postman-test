@@ -2,13 +2,13 @@ pipeline {
    agent {
         docker { 
             image 'postman/newman'
-           args '--user node'
+            args "--entrypoint=''"
         }
     }
     stages {
         stage('Installation de newman') {
             steps {
-                sh 'npm install -g newman newman-reporter-htmlextra'
+                sh 'newman --version'
             }
         }
 
