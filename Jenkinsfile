@@ -2,12 +2,13 @@ pipeline {
    agent {
         docker { 
             image 'node:18.10.0' 
+            args '-v /var/run/docker.sock:/var/run/docker.sock'
         }
     }
     stages {
         stage('Installation de newman') {
             steps {
-                sh 'npm install newman'
+                sh 'npm install -g newman newman-reporter-htmlextra'
             }
         }
 
