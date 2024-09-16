@@ -21,7 +21,6 @@ pipeline {
                 script {
                    sh '''
                         JAVA_ARGS="-Dhudson.model.DirectoryBrowserSupport.CSP=\"default-src 'self'; style-src 'self' 'unsafe-inline';\""
-                    echo $JAVA_ARGS
 '''
                 }
             }
