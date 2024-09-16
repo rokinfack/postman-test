@@ -5,40 +5,38 @@ pipeline {
         }
     }
     stages {
-
-         stage('RInstallation de newman') {
+        stage('Installation de newman') {
             steps {
-                sh 'npm install newman'
+                // Installer newman et le reporter htmlextra globalement
+                sh 'npm install -g newman newman-reporter-htmlextra'
             }
         }
+
         stage('Run Newman tests') {
             steps {
                 sh '''
                  mkdir -p reports
                  newman run newman_collections.json \
-                -r cli,json,junit \
-                -r cli,htmlextra \
+                 --reporters cli,json,junit,htmlextra \
                  --reporter-htmlextra-export ./reports/myreport.html \
                  --reporter-htmlextra-theme default
-                  ls -la ./reports
-                  cat ./reports/myreport.html
+                 
+                 // Vérifier le contenu du répertoire reports
+                 ls -la ./reports
+                 
+                 // Afficher le contenu du rapport HTML
+                 cat ./reports/myreport.html
                 '''
             }
         }
-      
-        stage('Set CSP') {
-            steps {
-                script {
-                   sh '''
-                        JAVA_ARGS="-Dhudson.model.DirectoryBrowserSupport.CSP=\"default-src 'self'; style-src 'self' 'unsafe-inline';\""
-'''
-                }
-            }
-        }
     }
+    
     post {
         always {
+            // Archiver les rapports générés
             archiveArtifacts artifacts: 'reports/*.html', allowEmptyArchive: true
+
+            // Publier le rapport HTML
             publishHTML(target: [
                 allowMissing: false,
                 alwaysLinkToLastBuild: true,
