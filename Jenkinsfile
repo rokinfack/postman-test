@@ -18,14 +18,9 @@ pipeline {
                  mkdir -p reports
                  newman run newman_collections.json \
                  --reporters cli,json,junit,htmlextra \
-                 --reporter-htmlextra-export ./reports/myreport.html \
-                 --reporter-htmlextra-theme default
-                 
-                 // Vérifier le contenu du répertoire reports
-                 ls -la ./reports
-                 
-                 // Afficher le contenu du rapport HTML
-                 cat ./reports/myreport.html
+                --reporter-json-export ./reports/report.json \
+                --reporter-junit-export ./reports/report.xml \
+                 --reporter-htmlextra-export ./reports/myreport.html 
                 '''
             }
         }
@@ -46,6 +41,10 @@ pipeline {
                 reportName: 'My Reports',
                 reportTitles: 'The Report'
             ])
+
+            junit "reports/myreport.xml"
         }
+
+        
     }
 }
