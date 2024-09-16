@@ -16,15 +16,14 @@ pipeline {
     }
     post {
         always {
-            //archiveArtifacts artifacts: 'report.json, report.xml'
-            archiveArtifacts artifacts: 'newman/*.html', allowEmptyArchive: true
-
-        }
-        success {
-            echo 'API Tests Passed!'
-        }
-        failure {
-            echo 'API Tests Failed. Check the reports for details.'
+            archiveArtifacts artifacts: 'newman/report.html', allowEmptyArchive: true
+            publishHTML(target: [
+                reportDir: 'newman',
+                reportFiles: '*.html',
+                keepAll: true,
+                alwaysLinkToLastBuild: true,
+                allowMissing: true
+            ])
         }
     }
 }
