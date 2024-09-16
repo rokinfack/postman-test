@@ -1,14 +1,13 @@
 pipeline {
    agent {
         docker { 
-            image 'node:latest' 
+            image 'node:18.10.0' 
         }
     }
     stages {
         stage('Installation de newman') {
             steps {
-                // Installer newman et le reporter htmlextra globalement
-                sh 'npm install -g newman newman-reporter-htmlextra'
+                sh 'npm install newman'
             }
         }
 
