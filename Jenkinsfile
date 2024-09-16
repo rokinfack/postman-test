@@ -14,9 +14,16 @@ pipeline {
             }
         }
     }
-    post {
+   post {
         always {
             archiveArtifacts artifacts: 'newman/*.html', allowEmptyArchive: true
+            script {
+                // Vérifiez la présence des fichiers HTML
+                def files = sh(script: 'ls -la newman/*.html', returnStdout: true).trim()
+                if (!files) {
+                    error "Aucun fichier HTML trouvé dans le répertoire 'newman'."
+                }
+            }
             publishHTML(target: [
                 reportDir: 'newman',
                 reportFiles: '*.html',
