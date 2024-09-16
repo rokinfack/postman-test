@@ -11,6 +11,7 @@ pipeline {
                  --reporter-htmlextra-export ./reports/myreport.html \
                  --reporter-htmlextra-theme default
                   ls -la ./reports
+                  cat ./reports/myreport.html
                 '''
             }
         }
