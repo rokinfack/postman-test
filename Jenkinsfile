@@ -2,7 +2,6 @@ pipeline {
    agent {
         docker { 
             image 'node:latest' 
-            args '-v /Users/rostandkinfack/.docker/run/docker.sock:/var/run/docker.sock'
         }
     }
     stages {
